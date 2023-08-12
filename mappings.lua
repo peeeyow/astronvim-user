@@ -16,13 +16,15 @@ return {
     ["<M-j>"] = { ":m .+1<cr>==", desc = "Move line one step below" },
     ["<M-k>"] = { ":m .-2<cr>==", desc = "Move line one step above" },
     ["dd"] = { delete_empty, expr = true },
+    ["<leader>h"] = { ":noh<cr>", desc = "Remove search highlight" },
+    ["<leader>/"] = false,
   },
   v = {
     ["<"] = { "<gv" },
     [">"] = { ">gv" },
     ["<M-j>"] = { ":m '>+1<cr>gv-gv", desc = "Move line one step below" },
     ["<M-k>"] = { ":m '<-2<cr>gv-gv", desc = "Move line one step above" },
-    ["<leader>h"] = { ":noh<cr>", desc = "Remove search highlight" },
+    ["<leader>/"] = false,
   },
   x = {
     ["p"] = { "p:let @+=@0<cr>" },
