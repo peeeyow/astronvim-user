@@ -38,6 +38,5 @@ return {
       diagnostics.tfsec,
       codeactions.gitsigns,
     }
-    return config
   end,
 }

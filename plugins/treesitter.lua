@@ -5,6 +5,5 @@ return {
     --     -- "lua"
     --   })
     opts.ensure_installed = "all"
-    return opts
   end,
 }

@@ -19,7 +19,6 @@ return {
         "yamlls",
       })
       opts.automatic_installation = true
-      return opts
     end,
   },
   {
@@ -31,7 +30,6 @@ return {
         "prettierd",
       })
       opts.automatic_installation = { exclude = { "mypy" } }
-      return opts
     end,
   },
   {
