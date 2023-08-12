@@ -1,4 +1,4 @@
-return function (local_vim)
+return function(local_vim)
   local_vim.opt.fillchars = {
     horiz = "━",
     horizup = "┻",
@@ -8,6 +8,7 @@ return function (local_vim)
     vertright = "┣",
     verthoriz = "╋",
   }
+  local_vim.opt.wrap = true
   local_vim.g.resession_enabled = true
   local_vim.opt.shortmess = vim.opt.shortmess + "c"
   local_vim.opt.nrformats = vim.opt.nrformats + { "alpha", "octal", "hex" }
