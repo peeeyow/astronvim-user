@@ -1,42 +1,4 @@
-local signs = {
-  { name = "DiagnosticSignError", text = "" },
-  { name = "DiagnosticSignWarn", text = "" },
-  { name = "DiagnosticSignHint", text = "" },
-  { name = "DiagnosticSignInfo", text = "" },
-}
-
 return {
-  updater = {
-    remote = "origin",
-    channel = "stable",
-    version = "latest",
-    branch = "nightly",
-    commit = nil,
-    pin_plugins = nil,
-    skip_prompts = false,
-    show_changelog = true,
-    auto_quit = false,
-    remotes = {
-    },
-  },
-
-  colorscheme = "onedark",
-
-  diagnostics = {
-    virtual_text = false,
-    update_in_insert = true,
-    signs = {
-      active = signs
-    },
-    float = {
-      focusable = false,
-      style = "minimal",
-      border = "rounded",
-      source = "always",
-      header = "",
-      prefix = "",
-    },
-  },
   lsp = {
     -- customize lsp formatting options
     formatting = {
@@ -64,33 +26,4 @@ return {
       -- "pyright"
     },
   },
-
-  -- Configure require("lazy").setup() options
-  lazy = {
-    defaults = { lazy = true },
-    performance = {
-      rtp = {
-        -- customize default disabled vim plugins
-        disabled_plugins = { "tohtml", "gzip", "matchit", "zipPlugin", "netrwPlugin", "tarPlugin" },
-      },
-    },
-  },
-
-  -- This function is run last and is a good place to configuring
-  -- augroups/autocommands and custom filetypes also this just pure lua so
-  -- anything that doesn't fit in the normal config locations above can go here
-  polish = function()
-    -- Set up custom filetypes
-    -- vim.filetype.add {
-    --   extension = {
-    --     foo = "fooscript",
-    --   },
-    --   filename = {
-    --     ["Foofile"] = "fooscript",
-    --   },
-    --   pattern = {
-    --     ["~/%.config/foo/.*"] = "fooscript",
-    --   },
-    -- }
-  end,
 }
