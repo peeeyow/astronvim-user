@@ -1,6 +1,8 @@
 # Todos
 
 - lsps
+  - terraformls
+- Ckolkey/ts-node-action
 - uga-rosa/ccc.nvim
 - sindrets/diffview.nvim
 - RRethy/vim-illuminate
