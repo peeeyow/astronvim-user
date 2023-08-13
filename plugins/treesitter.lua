@@ -20,16 +20,13 @@ local playground = {
 return {
   "nvim-treesitter/nvim-treesitter",
   dependencies = {
-    "HiPhish/nvim-ts-rainbow2",
+    "HiPhish/rainbow-delimiters.nvim",
     "nvim-treesitter/playground",
     "andymass/vim-matchup",
   },
   opts = function(_, opts)
     return require("astronvim.utils").extend_tbl(opts, {
       ensure_installed = "all",
-      rainbow = {
-        enable = true,
-      },
       playground = playground,
       matchup = {
         enable = true,

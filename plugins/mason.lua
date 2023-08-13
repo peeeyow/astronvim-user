@@ -4,17 +4,21 @@ return {
     opts = function(_, opts)
       opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
         "bashls",
+        "clangd",
         "cssls",
-        "eslint",
         "dockerls",
         "emmet_ls",
+        "eslint",
         "graphql",
         "html",
         "jsonls",
+        "lua_ls",
         "prismals",
         "pyright",
-        "lua_ls",
         "tailwindcss",
+        "taplo",
+        "terraformls",
+        "tflint",
         "tsserver",
         "yamlls",
       })
