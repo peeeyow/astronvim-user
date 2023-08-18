@@ -7,7 +7,8 @@ return {
   { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
   { import = "astrocommunity.editing-support.todo-comments-nvim" },
   { import = "astrocommunity.editing-support.treesj" },
-  { import = "astrocommunity.lsp.lsp-signature-nvim" },
   { import = "astrocommunity.git.diffview-nvim" },
+  { import = "astrocommunity.git.neogit" },
+  { import = "astrocommunity.lsp.lsp-signature-nvim" },
   { import = "astrocommunity.motion.nvim-surround" },
 }
