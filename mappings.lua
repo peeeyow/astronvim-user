@@ -21,6 +21,8 @@ local maps = {
     },
     ["<leader>h"] = { ":noh<cr>", desc = "Remove search highlight" },
     ["<leader>/"] = false,
+    ["|"] = false,
+    ["\\"] = false,
   },
   v = {
     ["<"] = { "<gv" },
