@@ -19,7 +19,7 @@ local maps = {
       end,
       expr = true,
     },
-    ["<leader>h"] = { ":noh<cr>", desc = "Remove search highlight" },
+    ["<leader>h"] = { "<cmd>noh<cr>", desc = "Remove search highlight" },
     ["<leader>/"] = false,
     ["|"] = false,
     ["\\"] = false,
