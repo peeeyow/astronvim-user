@@ -84,7 +84,6 @@ return {
           mappings = {
             ["<C-v>"] = "open_vsplit",
             ["<C-x>"] = "open_split",
-            ["<cr>"] = "open_with_window_picker",
           },
         },
         event_handlers = {
