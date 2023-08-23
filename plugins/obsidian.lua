@@ -52,12 +52,11 @@ return {
       new_notes_location = "notes_subdir",
     },
 
-    note_func_id = function(title)
+    note_id_func = function(title)
       local suffix = ""
       if title ~= nil then
         suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
       else
-        -- If title is nil, just add 4 random uppercase letters to the suffix.
         for _ = 1, 4 do
           suffix = suffix .. string.char(math.random(65, 90))
         end
@@ -65,10 +64,9 @@ return {
       return tostring(os.time()) .. "-" .. suffix
     end,
 
-    use_advanced_uri = true,
-    finder = "telescope.nvim",
-
     mappings = {},
+
+    disable_frontmatter = false,
 
     note_frontmatter_func = function(note)
       local out = { id = note.id, aliases = note.aliases, tags = note.tags }
@@ -81,5 +79,8 @@ return {
     end,
 
     follow_url_func = vim.ui.open or require("astronvim.utils").system_open,
+
+    use_advanced_uri = true,
+    finder = "telescope.nvim",
   },
 }
