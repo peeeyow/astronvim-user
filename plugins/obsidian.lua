@@ -1,3 +1,4 @@
+local prefix = "<leader>o"
 return {
   "epwalsh/obsidian.nvim",
   event = { "BufReadPre " .. vim.fn.expand "~" .. "/obsidian/main-vault/**.md" },
@@ -27,6 +28,17 @@ return {
       noremap = false,
       expr = true,
     },
+    { prefix, desc = "Obsidian" },
+    { prefix .. "o", "<cmd>ObsidianOpen<cr>", desc = "Open current buffer in Obsidian" },
+    { prefix .. "n", "<cmd>ObsidianNew<cr>", desc = "Create new zettelkasten note" },
+    { prefix .. "q", "<cmd>ObsidianQuickSwitch<cr>", desc = "Switch notes" },
+    { prefix .. "b", "<cmd>ObsidianBacklinks<cr>", desc = "Open Backlinks" },
+    { prefix .. "T", "<cmd>ObsidianToday<cr>", desc = "Create a new daily  note" },
+    { prefix .. "Y", "<cmd>ObsidianYesterday<cr>", desc = "Open yesterday's daily note" },
+    { prefix .. "t", "<cmd>ObsidianTemplate<cr>", desc = "Search for note template" },
+    { prefix .. "f", "<cmd>ObsidianSearch<cr>", desc = "Search for notes in vault" },
+    { prefix .. "l", "<cmd>ObsidianLink<cr>", mode = { "v" }, desc = "Link selection to existing note" },
+    { prefix .. "L", "<cmd>ObsidianLinkNew<cr>", mode = { "v" }, desc = "Create new link for current selection" },
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -69,6 +81,8 @@ return {
     disable_frontmatter = false,
 
     note_frontmatter_func = function(note)
+      -- return { tags = { "hello" }, title = note.id }
+
       local out = { id = note.id, aliases = note.aliases, tags = note.tags }
       if note.metadata ~= nil and require("obsidian").util.table_length(note.metadata) > 0 then
         for k, v in pairs(note.metadata) do
