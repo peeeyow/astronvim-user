@@ -81,8 +81,6 @@ return {
     disable_frontmatter = false,
 
     note_frontmatter_func = function(note)
-      -- return { tags = { "hello" }, title = note.id }
-
       local out = { id = note.id, aliases = note.aliases, tags = note.tags }
       if note.metadata ~= nil and require("obsidian").util.table_length(note.metadata) > 0 then
         for k, v in pairs(note.metadata) do
