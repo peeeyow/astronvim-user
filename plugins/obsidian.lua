@@ -35,16 +35,40 @@ return {
   },
   opts = {
     dir = vim.env.HOME .. "/obsidian/main-vault",
-    use_advanced_uri = true,
-    finder = "telescope.nvim",
 
-    mappings = {},
+    notes_subdir = "zettelkasten",
+
+    daily_notes = {
+      folder = "dailies",
+    },
 
     templates = {
       subdir = "templates",
       date_format = "%Y-%m-%d-%a",
       time_format = "%H:%M",
     },
+
+    completion = {
+      new_notes_location = "notes_subdir",
+    },
+
+    note_func_id = function(title)
+      local suffix = ""
+      if title ~= nil then
+        suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+      else
+        -- If title is nil, just add 4 random uppercase letters to the suffix.
+        for _ = 1, 4 do
+          suffix = suffix .. string.char(math.random(65, 90))
+        end
+      end
+      return tostring(os.time()) .. "-" .. suffix
+    end,
+
+    use_advanced_uri = true,
+    finder = "telescope.nvim",
+
+    mappings = {},
 
     note_frontmatter_func = function(note)
       local out = { id = note.id, aliases = note.aliases, tags = note.tags }
