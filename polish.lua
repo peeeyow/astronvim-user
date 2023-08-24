@@ -1,18 +1,21 @@
 return function()
-  local au = vim.api.nvim_create_autocmd
-  local aug = vim.api.nvim_create_augroup
+  local create_autocmd = vim.api.nvim_create_autocmd
+  local create_autogroup = vim.api.nvim_create_augroup
+  local create_user_command = vim.api.nvim_create_user_command
 
-  au("BufEnter", {
-    group = aug("no_comment_on_enter", { clear = true }),
+  create_autocmd("BufEnter", {
+    group = create_autogroup("no_comment_on_enter", { clear = true }),
     desc = "No longer comments upon newline",
     callback = function() vim.opt_local.formatoptions:remove { "c", "r", "o" } end,
   })
 
-  au("FocusGained", {
-    group = aug("auto_file_reload", { clear = true }),
+  create_autocmd("FocusGained", {
+    group = create_autogroup("auto_file_reload", { clear = true }),
     desc = "Reloads file when change is detected",
     command = "checktime",
   })
+
+  create_user_command("ObsNew", "ObsidianNew", {})
 
   -- au("ModeChanged", {
   --   group = aug("exit_luasnip_on_mode_change", { clear = true }),

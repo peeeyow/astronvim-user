@@ -28,7 +28,6 @@ return {
       noremap = false,
       expr = true,
     },
-    { prefix, desc = "Obsidian" },
     { prefix .. "o", "<cmd>ObsidianOpen<cr>", desc = "Open current buffer in Obsidian" },
     { prefix .. "n", "<cmd>ObsidianNew<cr>", desc = "Create new zettelkasten note" },
     { prefix .. "q", "<cmd>ObsidianQuickSwitch<cr>", desc = "Switch notes" },
