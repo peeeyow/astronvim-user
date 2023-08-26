@@ -30,7 +30,7 @@ return {
     },
     { prefix .. "o", "<cmd>ObsidianOpen<cr>", desc = "Open current buffer in Obsidian" },
     { prefix .. "n", "<cmd>ObsidianNew<cr>", desc = "Create new zettelkasten note" },
-    { prefix .. "q", "<cmd>ObsidianQuickSwitch<cr>", desc = "Switch notes" },
+    { prefix .. "F", "<cmd>ObsidianQuickSwitch<cr>", desc = "Switch notes" },
     { prefix .. "b", "<cmd>ObsidianBacklinks<cr>", desc = "Open Backlinks" },
     { prefix .. "T", "<cmd>ObsidianToday<cr>", desc = "Create a new daily  note" },
     { prefix .. "Y", "<cmd>ObsidianYesterday<cr>", desc = "Open yesterday's daily note" },
