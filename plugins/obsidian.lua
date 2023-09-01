@@ -95,7 +95,7 @@ return {
     },
 
     completion = {
-      new_notes_location = "notes_subdir",
+      new_notes_location = "current_dir",
     },
 
     note_id_func = function(title)
