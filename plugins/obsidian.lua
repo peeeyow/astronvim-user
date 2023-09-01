@@ -1,3 +1,40 @@
+local Input = require "nui.input"
+local event = require("nui.utils.autocmd").event
+
+local check_passthrough = function()
+  if require("obsidian").util.cursor_on_markdown_link() then
+    return "<cmd>ObsidianFollowLink<CR>"
+  else
+    return "gf"
+  end
+end
+
+local create_new_note = function()
+  local input = Input({
+    position = "50%",
+    size = {
+      width = 20,
+    },
+    border = {
+      style = "single",
+      text = {
+        top = "Enter filename",
+        top_align = "center",
+      },
+    },
+    win_options = {
+      winhighlight = "Normal:Normal,FloatBorder:Normal",
+    },
+  }, {
+    prompt = "> ",
+    default_value = "",
+    on_submit = function(value) vim.cmd("ObsidianNew " .. value) end,
+  })
+  input:on(event.BufLeave, function() input:unmount() end)
+  input:map("i", "<esc>", function() input:unmount() end, { noremap = true })
+  input:mount()
+end
+
 local prefix = "<leader>o"
 return {
   "epwalsh/obsidian.nvim",
@@ -18,31 +55,29 @@ return {
   keys = {
     {
       "gf",
-      function()
-        if require("obsidian").util.cursor_on_markdown_link() then
-          return "<cmd>ObsidianFollowLink<CR>"
-        else
-          return "gf"
-        end
-      end,
+      check_passthrough,
       noremap = false,
       expr = true,
     },
+    {
+      prefix .. "n",
+      create_new_note,
+    },
     { prefix .. "o", "<cmd>ObsidianOpen<cr>", desc = "Open current buffer in Obsidian" },
-    { prefix .. "n", "<cmd>ObsidianNew<cr>", desc = "Create new zettelkasten note" },
-    { prefix .. "F", "<cmd>ObsidianQuickSwitch<cr>", desc = "Switch notes" },
+    { prefix .. "f", "<cmd>ObsidianQuickSwitch<cr>", desc = "Switch notes" },
     { prefix .. "b", "<cmd>ObsidianBacklinks<cr>", desc = "Open Backlinks" },
     { prefix .. "T", "<cmd>ObsidianToday<cr>", desc = "Create a new daily  note" },
     { prefix .. "Y", "<cmd>ObsidianYesterday<cr>", desc = "Open yesterday's daily note" },
     { prefix .. "t", "<cmd>ObsidianTemplate<cr>", desc = "Search for note template" },
-    { prefix .. "f", "<cmd>ObsidianSearch<cr>", desc = "Search for notes in vault" },
-    { prefix .. "l", "<cmd>ObsidianLink<cr>", mode = { "v" }, desc = "Link selection to existing note" },
-    { prefix .. "L", "<cmd>ObsidianLinkNew<cr>", mode = { "v" }, desc = "Create new link for current selection" },
+    { prefix .. "F", "<cmd>ObsidianSearch<cr>", desc = "Search for notes in vault" },
+    { prefix .. "l", ":ObsidianLink<cr>", mode = { "v" }, desc = "Link selection to existing note" },
+    { prefix .. "L", ":ObsidianLinkNew<cr>", mode = { "v" }, desc = "Create new link for current selection" },
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
     "hrsh7th/nvim-cmp",
     "nvim-telescope/telescope.nvim",
+    "MunifTanjim/nui.nvim",
   },
   opts = {
     dir = vim.env.HOME .. "/obsidian/main-vault",
@@ -60,7 +95,7 @@ return {
     },
 
     completion = {
-      new_notes_location = "current_dir",
+      new_notes_location = "notes_subdir",
     },
 
     note_id_func = function(title)
