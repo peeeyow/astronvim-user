@@ -82,7 +82,7 @@ return {
   opts = {
     dir = vim.env.HOME .. "/obsidian/main-vault",
 
-    notes_subdir = "zettelkasten",
+    notes_subdir = "fleeting",
 
     daily_notes = {
       folder = "dailies",
