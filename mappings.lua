@@ -22,6 +22,10 @@ local maps = {
     ["<leader>gr"] = { function() require("gitsigns").reset_hunk() end, desc = "Reset Git hunk" },
     ["<leader>gR"] = { function() require("gitsigns").reset_buffer() end, desc = "Reset Git buffer" },
     ["<leader>h"] = { "<cmd>noh<cr>", desc = "Remove search highlight" },
+    ["<leader>L"] = {
+      function() require("notify").dismiss { pending = true, silent = true } end,
+      desc = "Dismiss all notifictions",
+    },
     ["<leader>o"] = { name = "Obsidian", desc = "󱞁 Obsidian" },
     ["<leader>/"] = false,
     ["|"] = false,
