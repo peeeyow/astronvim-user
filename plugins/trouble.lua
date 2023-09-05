@@ -14,5 +14,6 @@ return {
     },
     { prefix .. "z", "<cmd>TroubleToggle<cr>", desc = "Trouble" },
     { prefix .. "t", "<cmd>TroubleToggle todo<cr>", desc = "Todo (Trouble)" },
+    { prefix .. "r", "<cmd>TroubleToggle lsp_references<cr>", desc = "Todo (Trouble)" },
   },
 }
