@@ -38,7 +38,10 @@ end
 local prefix = "<leader>o"
 return {
   "epwalsh/obsidian.nvim",
-  event = { "BufReadPre " .. vim.fn.expand "~" .. "/obsidian/main-vault/**.md" },
+  event = {
+    "BufReadPre " .. vim.fn.expand "~" .. "/obsidian/main-vault/**.md",
+    "BufNewFile " .. vim.fn.expand "~" .. "/obsidian/main-vault/**.md",
+  },
   cmd = {
     "ObsidianOpen",
     "ObsidianNew",
