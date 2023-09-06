@@ -69,7 +69,7 @@ return {
     { prefix .. "T", "<cmd>ObsidianToday<cr>", desc = "Create a new daily  note" },
     { prefix .. "Y", "<cmd>ObsidianYesterday<cr>", desc = "Open yesterday's daily note" },
     { prefix .. "t", "<cmd>ObsidianTemplate<cr>", desc = "Search for note template" },
-    { prefix .. "F", "<cmd>ObsidianSearch<cr>", desc = "Search for notes in vault" },
+    { prefix .. "w", "<cmd>ObsidianSearch<cr>", desc = "Search for notes in vault" },
     { prefix .. "l", ":ObsidianLink<cr>", mode = { "v" }, desc = "Link selection to existing note" },
     { prefix .. "L", ":ObsidianLinkNew<cr>", mode = { "v" }, desc = "Create new link for current selection" },
   },
