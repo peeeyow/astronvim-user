@@ -1,7 +1,6 @@
 return function()
   local create_autocmd = vim.api.nvim_create_autocmd
   local create_autogroup = vim.api.nvim_create_augroup
-  local create_user_command = vim.api.nvim_create_user_command
 
   create_autocmd("BufEnter", {
     group = create_autogroup("no_comment_on_enter", { clear = true }),
@@ -15,7 +14,8 @@ return function()
     command = "checktime",
   })
 
-  create_user_command("ObsNew", "ObsidianNew", {})
+  -- don't auto remove highlight on key press other than hlsearch navigation
+  vim.on_key(function() end, vim.api.nvim_get_namespaces()["auto_hlsearch"])
 
   -- au("ModeChanged", {
   --   group = aug("exit_luasnip_on_mode_change", { clear = true }),
