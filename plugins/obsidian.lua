@@ -104,7 +104,7 @@ return {
     note_id_func = function(title)
       local suffix = ""
       if title ~= nil and #title:gsub("%s+", "") > 0 then
-        suffix = title:gsub("%s", "-"):gsub("[^A-Za-z0-9]", ""):lower()
+        suffix = title:gsub("[^A-Za-z0-9%s'\"]", ""):gsub("%s+", "-"):lower()
       else
         for _ = 1, 4 do
           suffix = suffix .. string.char(math.random(65, 90))
