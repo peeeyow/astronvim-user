@@ -67,14 +67,6 @@ return {
     },
   },
   {
-    "lukas-reineke/indent-blankline.nvim",
-    opts = {
-      indent = {
-        char = "▎",
-      },
-    },
-  },
-  {
     "nvim-neo-tree/neo-tree.nvim",
     opts = function(_, opts)
       local events = require "neo-tree.events"
