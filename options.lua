@@ -17,5 +17,6 @@ return function(local_vim)
   local_vim.opt.whichwrap = vim.opt.whichwrap + "<>[]hl"
   local_vim.opt.foldlevel = 99
   local_vim.opt.foldlevelstart = -1
+  local_vim.opt.conceallevel = 2
   return local_vim
 end
