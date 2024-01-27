@@ -31,6 +31,7 @@ return {
       opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
         "black",
         "flake8",
+        "isort",
         "prettierd",
       })
       opts.automatic_installation = { exclude = { "mypy" } }
@@ -39,7 +40,11 @@ return {
   {
     "jay-babu/mason-nvim-dap.nvim",
     opts = function(_, opts)
-      opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {})
+      opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
+        "python",
+      })
+      if not opts.handlers then opts.handlers = {} end
+      opts.handlers.python = function() end
     end,
   },
 }
