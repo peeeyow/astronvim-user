@@ -9,31 +9,36 @@ local check_passthrough = function()
   end
 end
 
-local create_new_note = function()
-  local input = Input({
-    position = "50%",
-    size = {
-      width = 20,
-    },
-    border = {
-      style = "single",
-      text = {
-        top = "Enter filename",
-        top_align = "center",
+local open_new_window = function(command)
+  return function()
+    local input = Input({
+      position = "50%",
+      size = {
+        width = 20,
       },
-    },
-    win_options = {
-      winhighlight = "Normal:Normal,FloatBorder:Normal",
-    },
-  }, {
-    prompt = "> ",
-    default_value = "",
-    on_submit = function(value) vim.cmd("ObsidianNew " .. value) end,
-  })
-  input:on(event.BufLeave, function() input:unmount() end)
-  input:map("i", "<esc>", function() input:unmount() end, { noremap = true })
-  input:mount()
+      border = {
+        style = "single",
+        text = {
+          top = "Enter filename",
+          top_align = "center",
+        },
+      },
+      win_options = {
+        winhighlight = "Normal:Normal,FloatBorder:Normal",
+      },
+    }, {
+      prompt = "> ",
+      default_value = "",
+      on_submit = function(value) vim.cmd(command .. value) end,
+    })
+    input:on(event.BufLeave, function() input:unmount() end)
+    input:map("i", "<esc>", function() input:unmount() end, { noremap = true })
+    input:mount()
+  end
 end
+
+local create_new_note = open_new_window "ObsidianNew "
+local paste_image = open_new_window "ObsidianPasteImg "
 
 local prefix = "<leader>o"
 return {
@@ -65,6 +70,12 @@ return {
     {
       prefix .. "n",
       create_new_note,
+      desc = "Create new Obsidian Note",
+    },
+    {
+      prefix .. "p",
+      paste_image,
+      desc = "Paste image from clipboard",
     },
     { prefix .. "o", "<cmd>ObsidianOpen<cr>", desc = "Open current buffer in Obsidian" },
     { prefix .. "f", "<cmd>ObsidianQuickSwitch<cr>", desc = "Switch notes" },
@@ -83,7 +94,13 @@ return {
     "MunifTanjim/nui.nvim",
   },
   opts = {
-    dir = vim.env.HOME .. "/obsidian/main-vault",
+    workspaces = {
+      {
+        name = "main",
+        path = vim.env.HOME .. "/obsidian/main-vault",
+      },
+    },
+    -- dir = vim.env.HOME .. "/obsidian/main-vault",
 
     notes_subdir = "fleeting",
 
@@ -99,6 +116,10 @@ return {
 
     completion = {
       new_notes_location = "current_dir",
+    },
+
+    attachments = {
+      img_folder = "attachments/images",
     },
 
     note_id_func = function(title)

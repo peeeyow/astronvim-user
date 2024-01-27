@@ -37,6 +37,7 @@ local maps = {
     ["<M-j>"] = { ":m '>+1<cr>gv-gv", desc = "Move line one step below" },
     ["<M-k>"] = { ":m '<-2<cr>gv-gv", desc = "Move line one step above" },
     ["<leader>/"] = false,
+    ["<leader>o"] = { name = "Obsidian", desc = "󱞁 Obsidian" },
   },
   x = {
     ["p"] = { "p:let @+=@0<cr>" },
