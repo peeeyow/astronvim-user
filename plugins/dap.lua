@@ -1,5 +1,11 @@
 return {
   {
+    "mfussenegger/nvim-dap",
+    config = function()
+      require("dap.ext.vscode").load_launchjs()
+    end,
+  },
+  {
     "rcarriga/nvim-dap-ui",
     keys = {
       {
@@ -39,6 +45,7 @@ return {
         name = "Django",
         program = vim.fn.getcwd() .. "/manage.py",
         args = { "runserver", "--noreload" },
+        django = true,
       })
     end,
   },
