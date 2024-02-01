@@ -72,11 +72,7 @@ return {
       create_new_note,
       desc = "Create new Obsidian Note",
     },
-    {
-      prefix .. "p",
-      paste_image,
-      desc = "Paste image from clipboard",
-    },
+    { prefix .. "p", "<cmd>ObsidianPasteImg<cr>", desc = "Paste image from clipboard" },
     { prefix .. "o", "<cmd>ObsidianOpen<cr>", desc = "Open current buffer in Obsidian" },
     { prefix .. "f", "<cmd>ObsidianQuickSwitch<cr>", desc = "Switch notes" },
     { prefix .. "b", "<cmd>ObsidianBacklinks<cr>", desc = "Open Backlinks" },
@@ -100,7 +96,6 @@ return {
         path = vim.env.HOME .. "/obsidian/main-vault",
       },
     },
-    -- dir = vim.env.HOME .. "/obsidian/main-vault",
 
     notes_subdir = "fleeting",
 
@@ -133,6 +128,8 @@ return {
       end
       return tostring(os.date "%Y%m%d%H%M%S") .. "-" .. suffix
     end,
+
+    image_name_func = function() return tostring(os.date "%Y%m%d%H%M%S") end,
 
     mappings = {},
 
