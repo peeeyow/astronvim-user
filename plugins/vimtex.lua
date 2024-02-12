@@ -18,7 +18,7 @@ return {
           buffer = event.buf,
         }
         local mappings = {
-          ["<leader>t"] = {
+          ["<localleader>l"] = {
             name = "+VimTeX",
             a = "Show Context Menu",
             C = "Full Clean",
