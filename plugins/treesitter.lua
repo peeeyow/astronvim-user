@@ -33,6 +33,7 @@ return {
       },
       highlight = {
         additional_vim_regex_highlighting = { "markdown" },
+        disable = { "latex" },
       },
     })
   end,

@@ -8,5 +8,4 @@ return {
     use_treesitter = false,
     allow_on_markdown = true,
   },
-  config = function(_, opts) require("luasnip-latex-snippets").setup(opts) end,
 }
