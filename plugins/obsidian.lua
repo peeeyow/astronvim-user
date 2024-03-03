@@ -109,9 +109,7 @@ return {
       time_format = "%H:%M:%S",
     },
 
-    completion = {
-      new_notes_location = "current_dir",
-    },
+    new_notes_location = "current_dir",
 
     attachments = {
       img_folder = "attachments/images",
