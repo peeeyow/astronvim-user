@@ -43,6 +43,7 @@ local paste_image = open_new_window "ObsidianPasteImg "
 local prefix = "<leader>o"
 return {
   "epwalsh/obsidian.nvim",
+  version = "v3.5.3",
   event = {
     "BufReadPre " .. vim.fn.expand "~" .. "/obsidian/main-vault/**.md",
     "BufNewFile " .. vim.fn.expand "~" .. "/obsidian/main-vault/**.md",
@@ -143,6 +144,16 @@ return {
       end
       return out
     end,
+
+    markdown_link_func = function(opts)
+      local util = require("obsidian").util
+      local anchor = opts.anchor and opts.anchor.anchor or ""
+      local header = opts.anchor and util.format_anchor_label(opts.anchor) or ""
+      local path = util.urlencode(opts.path, { keep_path_sep = true })
+      return string.format("[%s%s](/%s%s)", opts.label, header, path, anchor)
+    end,
+
+    preferred_link_style = "markdown",
 
     follow_url_func = vim.ui.open or require("astronvim.utils").system_open,
 
