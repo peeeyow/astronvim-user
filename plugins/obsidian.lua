@@ -43,7 +43,6 @@ local paste_image = open_new_window "ObsidianPasteImg "
 local prefix = "<leader>o"
 return {
   "epwalsh/obsidian.nvim",
-  version = "v3.5.3",
   event = {
     "BufReadPre " .. vim.fn.expand "~" .. "/obsidian/main-vault/**.md",
     "BufNewFile " .. vim.fn.expand "~" .. "/obsidian/main-vault/**.md",
