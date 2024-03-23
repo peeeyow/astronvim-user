@@ -23,11 +23,11 @@ return {
       ["<C-h>"] = cmp.mapping(function()
         if luasnip.jumpable(-1) then luasnip.jump(-1) end
       end, { "i", "s" }),
-      ["<C-f"] = cmp.mapping(
+      ["<C-f>"] = cmp.mapping(
         function(fallback) return luasnip.choice_active() and luasnip.change_choice(1) or fallback() end,
         { "i", "s" }
       ),
-      ["<C-b"] = cmp.mapping(
+      ["<C-b>"] = cmp.mapping(
         function(fallback) return luasnip.choice_active() and luasnip.change_choice(-1) or fallback() end,
         { "i", "s" }
       ),
